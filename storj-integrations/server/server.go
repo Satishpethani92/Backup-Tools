@@ -4,15 +4,21 @@ import (
 	googlepack "storj-integrations/apps/google"
 	"storj-integrations/storage"
 	"storj-integrations/storj"
-
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func StartServer(db *storage.PosgresStore) {
 	e := echo.New()
+
+    e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+      AllowOrigins: []string{"*"},
+      AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+    }))  
 	e.HideBanner = true
 
 	e.Use(DBMiddleware(db))
+
 
 	e.POST("/storj-auth", storj.HandleStorjAuthentication)
 
@@ -87,5 +93,5 @@ func StartServer(db *storage.PosgresStore) {
 	quickbooks.GET("/items-to-storj", handleQuickbooksItemsToStorj)
 	quickbooks.GET("/invoices-to-storj", handleQuickbooksInvoicesToStorj)
 
-	e.Start(":8000")
+	e.Start(":8005")
 }

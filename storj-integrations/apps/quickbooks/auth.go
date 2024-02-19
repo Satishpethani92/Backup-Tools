@@ -30,7 +30,7 @@ func CreateClient() (*QBClient, error) {
 // 	QuickbooksClient = &QBClient{ Client: &quickbooks.Client{
 // 		ClientID: os.Getenv("QUICKBOOKS_API_KEY"),
 // 		ClientSecret: os.Getenv("QUICKBOOKS_API_SECRET"),
-// 		RedirectURL: "http://localhost:8000/shopify/callback",
+// 		RedirectURL: "http://localhost:8005/shopify/callback",
 // 		Scopes: []string{"com.intuit.quickbooks.accounting, com.intuit.quickbooks.payment, openid, profile, email, phone, address"},
 // 	},
 // }

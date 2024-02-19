@@ -19,7 +19,7 @@ func Init() {
 	ShopifyInitApp = &ShopifyApp{App: goshopify.App{
 		ApiKey:      apiKey,
 		ApiSecret:   apiSecret,
-		RedirectUrl: "http://localhost:8000/shopify/callback",
+		RedirectUrl: "http://localhost:8005/shopify/callback",
 		Scope:       "read_products,read_orders,read_customers",
 	}}
 }
